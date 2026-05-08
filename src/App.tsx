@@ -336,7 +336,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-blue-300 tracking-widest mb-1">Call us directly</p>
-                      <p className="text-lg font-bold text-white">+91 XXXXX XXXXX</p>
+                      <p className="text-lg font-bold text-white">+91 93413 08850</p>
                     </div>
                   </div>
                   
@@ -346,7 +346,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-blue-300 tracking-widest mb-1">Email us</p>
-                      <p className="text-lg font-bold text-white">info@srimadhavsolar.com</p>
+                      <p className="text-lg font-bold text-white">srimadhavsolartech2025@gmail.com</p>
                     </div>
                   </div>
 
@@ -356,7 +356,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-blue-300 tracking-widest mb-1">Visit our office</p>
-                      <p className="text-lg font-bold text-white">Head Office, city, state, PIN</p>
+                      <p className="text-lg font-bold text-white">C/o Ashisri Arcade, 1st Floor, Opp. Water Booster, Moka Road, Gandhi Nagar, Ballari - 583102. Land Mark: Davanagere Benne Dose Hotel Branch-1</p>
                     </div>
                   </div>
                 </div>

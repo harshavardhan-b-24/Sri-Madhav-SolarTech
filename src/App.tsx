@@ -276,7 +276,7 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                img: "https://images.unsplash.com/photo-1548615467-f3d8ebc1bed8?q=80&w=2127&auto=format&fit=crop",
+                img: "https://i.ibb.co/h1XrRS6h/Solar-Panel-For-Home.jpg",
                 title: "5kW Residential ON-Grid",
                 type: "Residential"
               },

@@ -1,5 +1,5 @@
 const https = require('https');
-https.get('https://ibb.co/mVMwTQ9c', (res) => {
+https.get('https://ibb.co/CpmhFdnk', (res) => {
   let data = '';
   res.on('data', chunk => data += chunk);
   res.on('end', () => {

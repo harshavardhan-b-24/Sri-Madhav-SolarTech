@@ -231,7 +231,7 @@ export default function App() {
               className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col group"
             >
               <div className="h-64 overflow-hidden relative bg-blue-900 flex items-center justify-center">
-                <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?q=80&w=1974&auto=format&fit=crop" alt="Solar Inverter" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 mix-blend-overlay" />
+                <img src="https://i.ibb.co/RGYzWnCx/Chat-GPT-Image-May-10-2026-11-13-15-AM.png" alt="Solar Inverter" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute top-4 left-4 bg-blue-900 text-white font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-wider border border-white/20">Essential</div>
               </div>
               <div className="p-8 flex-1 flex flex-col">

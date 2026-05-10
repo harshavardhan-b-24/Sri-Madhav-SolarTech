@@ -14,17 +14,17 @@ export default function App() {
       <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
-            <div className="flex items-center gap-3">
-              <div className="bg-yellow-400 p-2 rounded-lg">
-                <Sun className="h-6 w-6 text-blue-900" />
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-3 group">
+              <div className="w-12 h-12 bg-white rounded-lg overflow-hidden shrink-0 border border-slate-100 shadow-sm flex items-center justify-center">
+                <img src="https://i.ibb.co/5xgWj1jr/LOGO-SMST.jpg" alt="Sri Madhav SolarTech Logo" className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
               </div>
               <div>
-                <h1 className="text-2xl font-black text-blue-900 tracking-tight uppercase">
+                <h1 className="text-2xl font-black text-blue-900 tracking-tight uppercase group-hover:text-blue-700 transition-colors">
                   Sri Madhav <span className="text-yellow-500">SolarTech</span>
                 </h1>
                 <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest hidden sm:block">Empowering Sustainable Futures</p>
               </div>
-            </div>
+            </a>
             
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
@@ -408,12 +408,14 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8 text-sm">
             <div className="md:col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <Sun className="h-6 w-6 text-yellow-400" />
-                <span className="font-black text-xl tracking-tight text-white uppercase">
+              <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-3 mb-4 group cursor-pointer inline-flex">
+                <div className="w-10 h-10 bg-white rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
+                  <img src="https://i.ibb.co/5xgWj1jr/LOGO-SMST.jpg" alt="Sri Madhav SolarTech Logo" className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+                </div>
+                <span className="font-black text-xl tracking-tight text-white uppercase group-hover:text-blue-200 transition-colors">
                   Sri Madhav <span className="text-yellow-400">SolarTech</span>
                 </span>
-              </div>
+              </a>
               <p className="max-w-xs leading-relaxed mb-4 text-blue-200 text-[13px] font-medium">
                 Dedicated to providing high-quality, sustainable energy solutions using world-class WAAREE equipment.
               </p>

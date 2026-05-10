@@ -263,7 +263,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-blue-900 mb-4">Featured Projects</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-blue-900 mb-4">Our Projects</h2>
               <p className="text-lg text-slate-600">
                 We've successfully completed over 30 major installations across the region. Here are a few examples of our recent work.
               </p>

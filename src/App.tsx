@@ -1,12 +1,48 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   Sun, Battery, Zap, ShieldCheck, ArrowRight, CheckCircle2, 
-  Phone, Mail, MapPin, Menu, X, Award, Lightbulb, Users, Factory 
+  Phone, Mail, MapPin, Menu, X, Award, Lightbulb, Users, Factory,
+  Home, Building2, Tractor
 } from 'lucide-react';
+
+// Mock data for projects
+const projectCategories = {
+  residential: {
+    title: 'Residential Projects',
+    description: 'Empowering homes with sustainable and cost-effective solar energy solutions.',
+    icon: <Home className="w-8 h-8" />,
+    images: [
+      'https://i.ibb.co/pv2RdFxj/solar-1.jpg',
+      'https://i.ibb.co/208sGYss/solar-2.jpg',
+      'https://i.ibb.co/q39xMrVK/solar-3.jpg',
+      'https://i.ibb.co/ZRLbMXj5/solar-5.jpg'
+    ]
+  },
+  commercial: {
+    title: 'Commercial Projects',
+    description: 'Large-scale solar installations driving efficiency for businesses.',
+    icon: <Building2 className="w-8 h-8" />,
+    images: [
+      'https://images.unsplash.com/photo-1592833159155-c62df1b65634?q=80&w=2079&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=2058&auto=format&fit=crop',
+      'https://i.ibb.co/0ysjw1xk/filters-quality-90.webp'
+    ]
+  },
+  agriculture: {
+    title: 'Agriculture Projects',
+    description: 'Solar water pumps and rural energy solutions for greater farm yields.',
+    icon: <Tractor className="w-8 h-8" />,
+    images: [
+      'https://i.ibb.co/Lw1M48F/solar-6.jpg',
+      'https://i.ibb.co/zWCmzhdb/Whats-App-Image-2026-05-10-at-10-45-00-AM.jpg'
+    ]
+  }
+};
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<keyof typeof projectCategories | null>(null);
 
   return (
     <div className="min-h-screen bg-slate-50 text-blue-900 font-sans">
@@ -92,7 +128,7 @@ export default function App() {
                   Get Free Quote
                   <ArrowRight className="h-5 w-5" />
                 </a>
-                <a href="#products" className="inline-flex justify-center items-center gap-2 bg-transparent hover:bg-white/10 text-white border border-white/30 px-8 py-4 rounded-xl font-bold transition-all">
+                <a href="#projects" className="inline-flex justify-center items-center gap-2 bg-transparent hover:bg-white/10 text-white border border-white/30 px-8 py-4 rounded-xl font-bold transition-all">
                   View Our Projects
                 </a>
               </div>
@@ -274,39 +310,27 @@ export default function App() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                img: "https://i.ibb.co/h1XrRS6h/Solar-Panel-For-Home.jpg",
-                title: "5kW Residential ON-Grid",
-                type: "Residential"
-              },
-              {
-                img: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?q=80&w=2079&auto=format&fit=crop",
-                title: "15kW Commercial Installation",
-                type: "Commercial"
-              },
-              {
-                img: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2072&auto=format&fit=crop",
-                title: "10kW Hybrid System w/ Battery",
-                type: "Residential"
-              }
-            ].map((project, index) => (
+            {Object.entries(projectCategories).map(([key, category], index) => (
               <motion.div 
-                key={index}
+                key={key}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group cursor-pointer"
+                onClick={() => setSelectedCategory(key as keyof typeof projectCategories)}
+                className="group cursor-pointer bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col"
               >
-                <div className="relative h-72 rounded-2xl overflow-hidden mb-4 border border-slate-100 shadow-sm">
-                  <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-blue-900/80 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div>
-                      <span className="text-yellow-400 text-[10px] font-bold uppercase tracking-widest mb-1 block">{project.type}</span>
-                      <h3 className="text-xl font-bold text-white leading-tight">{project.title}</h3>
-                    </div>
+                <div className="p-8 flex-1 flex flex-col items-center text-center relative overflow-hidden text-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-colors duration-500">
+                  <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white/10 group-hover:text-yellow-400 group-hover:scale-110 transition-all duration-300">
+                    {category.icon}
                   </div>
+                  <h3 className="text-xl font-bold mb-3">{category.title}</h3>
+                  <p className="text-slate-600 group-hover:text-blue-100 leading-relaxed text-sm transition-colors duration-500">
+                    {category.description}
+                  </p>
+                </div>
+                <div className="bg-yellow-400 py-4 text-center text-blue-900 text-xs font-bold uppercase tracking-widest group-hover:bg-yellow-300 transition-colors">
+                  View Projects &rarr;
                 </div>
               </motion.div>
             ))}
@@ -452,6 +476,57 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Modal for Projects Showcase */}
+      <AnimatePresence>
+        {selectedCategory && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-900/90 backdrop-blur-md"
+            onClick={() => setSelectedCategory(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl border border-white/20"
+            >
+              <div className="flex items-center justify-between p-6 sm:p-8 border-b border-slate-100 bg-slate-50">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center">
+                    {projectCategories[selectedCategory].icon}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-black text-blue-900">{projectCategories[selectedCategory].title}</h3>
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">{projectCategories[selectedCategory].images.length} Projects Showcase</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setSelectedCategory(null)}
+                  className="p-3 bg-white border border-slate-200 text-slate-500 hover:bg-red-50 hover:text-red-600 hover:border-red-200 rounded-xl transition-all shadow-sm"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="p-6 sm:p-8 overflow-y-auto bg-slate-100/50">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {projectCategories[selectedCategory].images.map((img, idx) => (
+                    <div key={idx} className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm aspect-square sm:aspect-[4/3] bg-white relative group cursor-pointer hover:shadow-lg transition-shadow">
+                      <img src={img} alt={`Project ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span className="text-white font-bold tracking-wide">Project #{idx + 1}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,9 +1,22 @@
 const https = require('https');
-https.get('https://ibb.co/4gnZSFS8', (res) => {
-  let data = '';
-  res.on('data', chunk => data += chunk);
-  res.on('end', () => {
-    const match = data.match(/<meta property="og:image" content="(.*?)"/);
-    if(match) console.log(match[1]);
-  });
-});
+const urls = [
+  'https://ibb.co/VYwWKbsd'
+];
+
+async function fetchLinks() {
+  for (const url of urls) {
+    await new Promise((resolve) => {
+      https.get(url, (res) => {
+        let data = '';
+        res.on('data', chunk => data += chunk);
+        res.on('end', () => {
+          const match = data.match(/<meta property="og:image" content="(.*?)"/);
+          console.log(match ? match[1] : 'Not found');
+          resolve();
+        });
+      });
+    });
+  }
+}
+fetchLinks();
+

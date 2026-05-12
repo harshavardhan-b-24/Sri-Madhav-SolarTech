@@ -1,6 +1,6 @@
 const https = require('https');
 const urls = [
-  'https://ibb.co/VYwWKbsd'
+  'https://ibb.co/d0DH2rMN'
 ];
 
 async function fetchLinks() {
@@ -19,4 +19,5 @@ async function fetchLinks() {
   }
 }
 fetchLinks();
+
 

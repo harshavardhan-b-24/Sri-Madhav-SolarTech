@@ -43,6 +43,13 @@ const projectCategories = {
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<keyof typeof projectCategories | null>(null);
+  const [modalContent, setModalContent] = useState<'privacy' | 'terms' | null>(null);
+
+  const getModalTitle = () => {
+    if (modalContent === 'privacy') return "Privacy Policy";
+    if (modalContent === 'terms') return "Terms and Services";
+    return "";
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-blue-900 font-sans">
@@ -471,7 +478,13 @@ export default function App() {
           </div>
           
           <div className="pt-8 border-t border-blue-900/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-bold text-blue-300 uppercase tracking-widest">
-            <p>&copy; {new Date().getFullYear()} Sri Madhav SolarTech. All rights reserved.</p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
+              <p>&copy; {new Date().getFullYear()} Sri Madhav SolarTech. All rights reserved.</p>
+              <div className="flex items-center gap-4">
+                <button onClick={() => setModalContent('privacy')} className="hover:text-yellow-400 transition-colors">Privacy Policy</button>
+                <button onClick={() => setModalContent('terms')} className="hover:text-yellow-400 transition-colors">Terms of Services</button>
+              </div>
+            </div>
             <p className="text-yellow-400">Authorized Partner of WAAREE Energies Ltd.</p>
           </div>
         </div>
@@ -522,6 +535,67 @@ export default function App() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Info Modal for Privacy & Terms */}
+      <AnimatePresence>
+        {modalContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-900/90 backdrop-blur-md"
+            onClick={() => setModalContent(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl border border-white/20"
+            >
+              <div className="flex items-center justify-between p-6 sm:p-8 border-b border-slate-100 bg-slate-50">
+                <h3 className="text-2xl font-black text-blue-900">{getModalTitle()}</h3>
+                <button 
+                  onClick={() => setModalContent(null)}
+                  className="p-3 bg-white border border-slate-200 text-slate-500 hover:bg-red-50 hover:text-red-600 hover:border-red-200 rounded-xl transition-all shadow-sm"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="p-6 sm:p-8 overflow-y-auto bg-white text-slate-700 leading-relaxed space-y-6">
+                {modalContent === 'privacy' && (
+                  <>
+                    <p><strong>Effective Date:</strong> January 1, 2025</p>
+                    <p>At Sri Madhav SolarTech, we take your privacy seriously. This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from our website or engage our services directly.</p>
+                    <h4 className="text-lg font-bold text-blue-900">Information We Collect</h4>
+                    <p>We collect information that you manually submit to us, including your name, phone number, email address, property details, and project requirements when you request a quote or contact us for consultation.</p>
+                    <h4 className="text-lg font-bold text-blue-900">How We Use Your Information</h4>
+                    <p>We use this information to: Provide estimates, assist with PM Surya Yojane scheme subsidy processing to government entities, schedule site visits, and communicate with you about your solar project status.</p>
+                    <h4 className="text-lg font-bold text-blue-900">Sharing Your Personal Information</h4>
+                    <p>We share your personal information only with necessary government portals (for subsidy applications) and our hardware partner WAAREE Energies Ltd where applicable for warranty registration.</p>
+                    <h4 className="text-lg font-bold text-blue-900">Contact Us</h4>
+                    <p>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by email at srimadhavsolartech2025@gmail.com.</p>
+                  </>
+                )}
+                {modalContent === 'terms' && (
+                  <>
+                    <p><strong>Effective Date:</strong> January 1, 2025</p>
+                    <p>Welcome to Sri Madhav SolarTech. By accessing this website and utilizing our services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    <h4 className="text-lg font-bold text-blue-900">1. Service Provision</h4>
+                    <p>We act as an authorized partner of WAAREE Energies Ltd. Estimates and system generative capacities are approximate and subject to precise site evaluation, weather conditions, and seasonal sunlight availability.</p>
+                    <h4 className="text-lg font-bold text-blue-900">2. Subsidy Eligibility</h4>
+                    <p>While we assist customers in applying for the PM Surya Yojane scheme, final subsidy approval remains solely at the discretion of the respective government authorities. Sri Madhav SolarTech is not liable for delayed or rejected government subsidies.</p>
+                    <h4 className="text-lg font-bold text-blue-900">3. Warranties</h4>
+                    <p>All hardware warranties (including the 25-yr panel warranty and 6-yr inverter warranty) are honored directly by the respective manufacturers (e.g., WAAREE). Our installation guarantees cover workmanship defects for the period agreed upon in the final contract.</p>
+                    <h4 className="text-lg font-bold text-blue-900">4. Modifications</h4>
+                    <p>We reserve the right to modify these terms from time to time at our sole discretion. Therefore, you should review these pages periodically.</p>
+                  </>
+                )}
               </div>
             </motion.div>
           </motion.div>

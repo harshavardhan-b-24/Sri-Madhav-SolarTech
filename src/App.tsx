@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Sun, Battery, Zap, ShieldCheck, ArrowRight, CheckCircle2, 
   Phone, Mail, MapPin, Menu, X, Award, Lightbulb, Users, Factory,
-  Home, Building2, Tractor
+  Home, Building2, Tractor, Wifi
 } from 'lucide-react';
 
 // Mock data for projects
@@ -431,6 +431,29 @@ export default function App() {
 
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Advertisement */}
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a href="https://onebroadbandballari.in" target="_blank" rel="noopener noreferrer" className="block w-full bg-gradient-to-r from-blue-900 to-blue-800 rounded-3xl p-8 md:p-12 shadow-xl shadow-blue-900/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group border border-blue-700">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity translate-x-4 -translate-y-4">
+              <Wifi className="w-32 h-32 text-white" />
+            </div>
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+              <div className="max-w-2xl">
+                <span className="inline-block px-3 py-1 bg-yellow-400 text-blue-900 text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 shadow-sm">Partner Company</span>
+                <h3 className="text-2xl md:text-4xl font-black text-white tracking-tight mb-3">Looking for High-Speed Internet?</h3>
+                <p className="text-blue-200 text-base md:text-lg">Experience seamless connectivity with <span className="text-white font-bold">One Broadband Ballari</span>. Fast, reliable, and affordable internet services for your home or business.</p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="inline-flex items-center justify-center gap-2 bg-white text-blue-900 font-bold px-8 py-4 rounded-xl hover:bg-slate-100 transition-colors shadow-lg shadow-black/10 uppercase tracking-widest text-sm whitespace-nowrap group-hover:scale-105 transform">
+                  Visit Website <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 

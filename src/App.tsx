@@ -367,7 +367,7 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-[10px] uppercase font-bold text-blue-300 tracking-widest mb-1">Call us directly</p>
-                      <p className="text-lg font-bold text-white">+91 93413 08850</p>
+                      <p className="text-lg font-bold text-white">+91 93413 08850, +91 94483 23359</p>
                     </div>
                   </div>
                   

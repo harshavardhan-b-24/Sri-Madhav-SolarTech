@@ -21,7 +21,7 @@ const projectCategories = {
   },
   commercial: {
     title: 'Commercial Projects',
-    description: 'Large-scale solar installations driving efficiency for businesses.',
+    description: 'Large-scale solar installations driving efficiency for businesses, including Temples, A.C. Function Halls, Hotels, Petrol Pumps, and Hospitals.',
     icon: <Building2 className="w-8 h-8" />,
     images: [
       'https://images.unsplash.com/photo-1592833159155-c62df1b65634?q=80&w=2079&auto=format&fit=crop',
@@ -281,7 +281,7 @@ export default function App() {
                 <div className="text-blue-600 mb-4 font-bold uppercase text-[10px] tracking-widest">Power Systems</div>
                 <h3 className="text-2xl font-bold mb-2 text-slate-800">WAAREE Inverters</h3>
                 <div className="flex items-center gap-2 mb-6">
-                  <div className="bg-green-100 text-green-700 px-2 py-1 rounded text-[11px] font-bold">6 YR WARRANTY</div>
+                  <div className="bg-green-100 text-green-700 px-2 py-1 rounded text-[11px] font-bold">8 YR WARRANTY</div>
                   <div className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[11px] font-bold">ON/OFF GRID</div>
                 </div>
                 <p className="text-slate-600 mb-8 flex-1 text-sm leading-relaxed">
@@ -548,6 +548,13 @@ export default function App() {
                 </button>
               </div>
               <div className="p-6 sm:p-8 overflow-y-auto bg-slate-100/50">
+                {selectedCategory === 'commercial' && (
+                  <div className="mb-6 bg-blue-50 border border-blue-100 rounded-xl p-4 text-blue-900 border-l-4 border-l-yellow-400">
+                    <p className="font-medium text-sm">
+                      We have also successfully completed projects providing our solar panels to <strong>Temples, A.C. Function Halls, Hotels, Petrol Pumps, and Hospitals</strong>.
+                    </p>
+                  </div>
+                )}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {projectCategories[selectedCategory].images.map((img, idx) => (
                     <div key={idx} className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm aspect-square sm:aspect-[4/3] bg-white relative group cursor-pointer hover:shadow-lg transition-shadow">
